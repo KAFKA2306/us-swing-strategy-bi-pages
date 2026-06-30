@@ -2,6 +2,7 @@
 
 Static GitHub Pages bundle for the reconstructed US stock swing strategy audit dashboard.
 
+- Published page: https://kafka2306.github.io/us-swing-strategy-bi-pages/
 - Source snapshot: `10_projects/Kabu_Swing_Strategy` artifacts from 2026-06-22.
 - Data model: TOP3 buy-now candidates, backtest matrix, Stage1 fundamentals, raw score outliers, cache coverage, and audit gaps.
 - Runtime: no backend and no external browser dependencies; the dashboard embeds static JSON generated from the vault build.
