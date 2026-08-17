@@ -1,5 +1,7 @@
 # US Swing Strategy BI Dashboard
 
+[![pages-build-deployment](https://github.com/KAFKA2306/us-swing-strategy-bi-pages/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/KAFKA2306/us-swing-strategy-bi-pages/actions/workflows/pages/pages-build-deployment)
+
 Static GitHub Pages bundle for the reconstructed US stock swing strategy audit dashboard.
 
 - Published page: https://kafka2306.github.io/us-swing-strategy-bi-pages/
