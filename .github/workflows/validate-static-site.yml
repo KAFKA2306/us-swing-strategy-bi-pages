@@ -1,0 +1,36 @@
+name: Validate static site
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Validate published bundle
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          root = Path(".")
+          html = (root / "index.html").read_text(encoding="utf-8")
+          assert "<title>US Swing Strategy BI</title>" in html
+          assert "2026-06-22" in html
+          assert "Audit Gaps" in html
+          refs = set(re.findall(r'(?:href|src)="([^\"]+)"', html))
+          local = [ref for ref in refs if not ref.startswith(("http://", "https://", "#", "data:"))]
+          assert local, "index.html has no local assets"
+          missing = [ref for ref in local if not (root / ref.split("?", 1)[0]).is_file()]
+          assert not missing, f"missing local assets: {missing}"
+          print(f"validated {len(local)} local assets")
+          PY
